@@ -21,7 +21,7 @@ rest.setHeaders(header);
 
 rest.getfile('/image', function(err, query) {
     if (!err) {
-        fs.readFile("./assets/" + query.id + ".txt", 'utf8', function (err,data) {
+        fs.readFile("/app/assets/" + query.id + ".txt", 'utf8', function (err,data) {
                 if (err) {
                         return console.log(err);
                 }
