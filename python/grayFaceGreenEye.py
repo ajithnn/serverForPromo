@@ -1,8 +1,9 @@
 import numpy as np
 import cv2
+import sys
 #from matplotlib import pyplot as plt
 
-imgTest = cv2.imread('/app/python/IMG5.jpg',0)
+imgTest = cv2.imread('/app/assets/CurrentImg.jpg',0)
 trainFnamesList = ['/app/python/diaper.png', '/app/python/chicco.png', '/app/python/justoneyou.png', '/app/python/minecraft.png', '/app/python/doritos.png'] 
 urlList = ['http://www.target.com/s?searchTerm=diapers', 'http://www.target.com/s?searchTerm=chicco', 'http://www.target.com/s?searchTerm=just+one+you', 'http://www.target.com/s?searchTerm=minecraft', 'http://www.target.com/s?searchTerm=doritos']
 
@@ -46,7 +47,6 @@ matches5 = sorted(matches5, key = lambda x:x.distance)
 # Sort them in the order of their distance.
 s = [0, 0, 0, 0, 0]
 
-print matches1
 
 for i in range(0,150):
     s[0] = s[0]+matches1[i].distance
@@ -63,4 +63,6 @@ for i in range(0,150):
 for i in range(0,150):
     s[4] = s[4]+matches5[i].distance
 
-print urlList[np.argmin(s)]
+fo = open('/app/assets/' + sys.argv[2],'w+')
+fo.write(urlList[np.argmin(s)])
+fo.close()
