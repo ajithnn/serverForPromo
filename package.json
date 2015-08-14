@@ -1,0 +1,26 @@
+{
+  "name": "ServerForIris",
+  "version": "0.9.11",
+  "description": "Server code to provide and process image files uploaded throught the app.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "exprestify": "^0.3.7",
+    "socket.io": "^1.3.5"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/fathomless-savannah-7244"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
