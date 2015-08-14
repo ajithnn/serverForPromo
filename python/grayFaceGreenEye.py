@@ -2,8 +2,8 @@ import numpy as np
 import cv2
 #from matplotlib import pyplot as plt
 
-imgTest = cv2.imread('IMG5.jpg',0)
-trainFnamesList = ['diaper.png', 'chicco.png', 'justoneyou.png', 'minecraft.png', 'doritos.png'] 
+imgTest = cv2.imread('/app/python/IMG5.jpg',0)
+trainFnamesList = ['/app/python/diaper.png', '/app/python/chicco.png', '/app/python/justoneyou.png', '/app/python/minecraft.png', '/app/python/doritos.png'] 
 urlList = ['http://www.target.com/s?searchTerm=diapers', 'http://www.target.com/s?searchTerm=chicco', 'http://www.target.com/s?searchTerm=just+one+you', 'http://www.target.com/s?searchTerm=minecraft', 'http://www.target.com/s?searchTerm=doritos']
 
 img1 = cv2.imread(trainFnamesList[0],0)
