@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 import webbrowser as wb
+import sys 
 
 imgTest = cv2.imread('/app/assets/CurrentImg.jpg',0)
 trainFnamesList = ['/app/python/diaper.png', '/app/python/chicco.png', '/app/python/justoneyou.png', '/app/python/minecraft.png', '/app/python/doritos.png'] 
