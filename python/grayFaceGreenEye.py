@@ -46,6 +46,8 @@ matches5 = sorted(matches5, key = lambda x:x.distance)
 # Sort them in the order of their distance.
 s = [0, 0, 0, 0, 0]
 
+print matches1
+
 for i in range(0,150):
     s[0] = s[0]+matches1[i].distance
     

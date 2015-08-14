@@ -39,7 +39,7 @@ rest.get('/runpy', function(err, query,ctype) {
         var pathforPython = 'python ';
         var pathForFile = __dirname + '/python/grayFaceGreenEye.py ';// Change here the python file name.
         console.log(pathforPython + pathForFile + __dirname + " outImage_"+ query.id + ".jpg");// change the params below also.
-        exec(pathforPython + pathForFile + __dirname + " outImage_"+ query.id + ".txt" + " error_" + query.id, function(error, stdout, stderr) {
+        exec(pathforPython + pathForFile, function(error, stdout, stderr) {
              console.log(stdout);  
              console.log(error); 
         });
