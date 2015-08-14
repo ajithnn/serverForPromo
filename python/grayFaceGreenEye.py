@@ -1,7 +1,6 @@
 import numpy as np
 import cv2
-import sys
-#from matplotlib import pyplot as plt
+import webbrowser as wb
 
 imgTest = cv2.imread('/app/assets/CurrentImg.jpg',0)
 trainFnamesList = ['/app/python/diaper.png', '/app/python/chicco.png', '/app/python/justoneyou.png', '/app/python/minecraft.png', '/app/python/doritos.png'] 
@@ -44,25 +43,35 @@ matches3 = sorted(matches3, key = lambda x:x.distance)
 matches4 = sorted(matches4, key = lambda x:x.distance)
 matches5 = sorted(matches5, key = lambda x:x.distance)
 
-# Sort them in the order of their distance.
 s = [0, 0, 0, 0, 0]
 
+src_pts = np.float32([ kp1[m.queryIdx].pt for m in matches1[:50] ]).reshape(-1,1,2)
+dst_pts = np.float32([ kpTest[m.trainIdx].pt for m in matches1[:50] ]).reshape(-1,1,2)
+M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC,5.0)
+s[0] = np.abs(np.int16(M[0,1]))+np.abs(np.int16(M[1,0]))
 
-for i in range(0,150):
-    s[0] = s[0]+matches1[i].distance
-    
-for i in range(0,150):
-    s[1] = s[1]+matches2[i].distance
+src_pts = np.float32([ kp2[m.queryIdx].pt for m in matches2[:50] ]).reshape(-1,1,2)
+dst_pts = np.float32([ kpTest[m.trainIdx].pt for m in matches2[:50] ]).reshape(-1,1,2)
+M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC,5.0)
+s[1] = np.abs(np.int16(M[0,1]))+np.abs(np.int16(M[1,0]))
 
-for i in range(0,150):
-    s[2] = s[2]+matches3[i].distance
+src_pts = np.float32([ kp3[m.queryIdx].pt for m in matches3[:50] ]).reshape(-1,1,2)
+dst_pts = np.float32([ kpTest[m.trainIdx].pt for m in matches3[:50] ]).reshape(-1,1,2)
+M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC,5.0)
+s[2] = np.abs(np.int16(M[0,1]))+np.abs(np.int16(M[1,0]))
 
-for i in range(0,150):
-    s[3] = s[3]+matches4[i].distance
+src_pts = np.float32([ kp4[m.queryIdx].pt for m in matches4[:50] ]).reshape(-1,1,2)
+dst_pts = np.float32([ kpTest[m.trainIdx].pt for m in matches4[:50] ]).reshape(-1,1,2)
+M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC,5.0)
+s[3] = np.abs(np.int16(M[0,1]))+np.abs(np.int16(M[1,0]))
 
-for i in range(0,150):
-    s[4] = s[4]+matches5[i].distance
+src_pts = np.float32([ kp5[m.queryIdx].pt for m in matches5[:50] ]).reshape(-1,1,2)
+dst_pts = np.float32([ kpTest[m.trainIdx].pt for m in matches5[:50] ]).reshape(-1,1,2)
+M, mask = cv2.findHomography(src_pts, dst_pts, cv2.RANSAC,5.0)
+s[4] = np.abs(np.int16(M[0,1]))+np.abs(np.int16(M[1,0]))
 
+
+#print urlList[np.argmin(s)]
 fo = open('/app/assets/' + sys.argv[1],'w+')
 fo.write(urlList[np.argmin(s)])
 fo.close()
