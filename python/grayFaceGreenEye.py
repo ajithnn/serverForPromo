@@ -5,7 +5,7 @@ import sys
 
 imgTest = cv2.imread('/app/assets/CurrentImg.jpg',0)
 trainFnamesList = ['/app/python/diaper.png', '/app/python/chicco.png', '/app/python/justoneyou.png', '/app/python/minecraft.png', '/app/python/doritos.png'] 
-urlList = ['m.target.com/s?searchTerm=diapers', 'm..target.com/s?searchTerm=chicco', 'm..target.com/s?searchTerm=just+one+you', 'm..target.com/s?searchTerm=minecraft', 'm..target.com/s?searchTerm=doritos']
+urlList = ['http://www.target.com/s?searchTerm=diapers', 'http://www.target.com/s?searchTerm=chicco', 'http://www.target.com/s?searchTerm=just+one+you', 'http://www.target.com/s?searchTerm=minecraft', 'http://www.target.com/s?searchTerm=doritos']
 
 img1 = cv2.imread(trainFnamesList[0],0)
 img2 = cv2.imread(trainFnamesList[1],0)
