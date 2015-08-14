@@ -63,6 +63,6 @@ for i in range(0,150):
 for i in range(0,150):
     s[4] = s[4]+matches5[i].distance
 
-fo = open('/app/assets/' + sys.argv[2],'w+')
+fo = open('/app/assets/' + sys.argv[1],'w+')
 fo.write(urlList[np.argmin(s)])
 fo.close()

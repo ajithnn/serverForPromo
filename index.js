@@ -38,8 +38,8 @@ rest.get('/runpy', function(err, query,ctype) {
     if (!err) {
         var pathforPython = 'python ';
         var pathForFile = __dirname + '/python/grayFaceGreenEye.py ';// Change here the python file name.
-        console.log(pathforPython + pathForFile + __dirname + " outImage_"+ query.id + ".jpg");// change the params below also.
-        exec(pathforPython + pathForFile, function(error, stdout, stderr) {
+        console.log(pathforPython + pathForFile + " /app/assets/outImage_"+ query.id + ".txt");// change the params below also.
+        exec(pathforPython + pathForFile + " /app/assets/outImage_"+ query.id + ".txt", function(error, stdout, stderr) {
              console.log(stdout);  
              console.log(error); 
         });
@@ -64,7 +64,7 @@ var io = rest.getSocketServer()
 io.on('connection', function(socket) {
 	console.log("Connected: " + socket.id);
     fs.watch('./assets/', function(event, filename) {
-        if(filename == "outImage_"+socket.id+".jpg")
+        if(filename == "outImage_"+socket.id + ".txt")
         {
         var time = new Date().getTime();
         console.log("Sent");
