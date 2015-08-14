@@ -73,6 +73,6 @@ s[4] = np.abs(np.int16(M[0,1]))+np.abs(np.int16(M[1,0]))
 
 
 #print urlList[np.argmin(s)]
-fo = open('/app/assets/' + sys.argv[1],'w+')
+fo = open(sys.argv[1],'w+')
 fo.write(urlList[np.argmin(s)])
 fo.close()
