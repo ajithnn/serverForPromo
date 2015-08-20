@@ -81,5 +81,5 @@ if ((np.max(s)/numMtchs) > 0.5):
     fo.close()
 else:
     fo = open('/app/assets/out.txt','w+')
-    fo.write('Not Found')
+    fo.write('http://google.co.in/')
     fo.close()
