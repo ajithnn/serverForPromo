@@ -82,6 +82,4 @@ if ((np.max(s)/numMtchs) > 0.5):
 else:
     fo = open('/app/assets/out.txt','w+')
     fo.write('Not Found')
-    fo.close()	
-    fo.write(“Not Found”)
-    fo.close()	
+    fo.close()
