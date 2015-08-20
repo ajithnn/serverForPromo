@@ -68,7 +68,7 @@ io.on('connection', function(socket) {
         if (filename == "out.txt") {
             OldTime = time;
             time = new Date().getTime();
-            if(time - Oldtime < 150)
+            if(time - OldTime < 150)
             {
             console.log("Sent");
             fs.readFile('/app/assets/out.txt', 'utf8', function(err, data) {
