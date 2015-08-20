@@ -60,12 +60,16 @@ rest.multipost('/PostPhoto', function(err, data) {
 }, multiopt);
 
 var io = rest.getSocketServer()
-
+var time = new Date("January 1 1970 00:00:00");
+var OldTime = null;
 io.on('connection', function(socket) {
     console.log("Connected: " + socket.id);
     fs.watch('./assets/', function(event, filename) {
         if (filename == "out.txt") {
-            var time = new Date().getTime();
+            OldTime = time;
+            time = new Date().getTime();
+            if(time - Oldtime < 150)
+            {
             console.log("Sent");
             fs.readFile('/app/assets/out.txt', 'utf8', function(err, data) {
                 if (err) {
@@ -73,6 +77,7 @@ io.on('connection', function(socket) {
                 }
                 io.to(socket.id).emit("OpenUrl", data);
             });
+            }
         } else if (filename == "error_" + socket.id) {
             fs.readFile(filename, 'utf8', function(err, data) {
                 if (err) {
